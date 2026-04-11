@@ -3,73 +3,336 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Outbound Starter Pack for B2B SaaS Agencies</title>
+  <title>Pipeline Pack | Done-for-you outbound packs for B2B agencies</title>
+  <meta name="description" content="Pipeline Pack builds prospect lists, personalized openers, and outreach sequences for B2B agencies that need more conversations without adding headcount." />
   <style>
-    :root { color-scheme: light; }
-    body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; line-height: 1.45; margin: 0; color: #111827; background: #f9fafb; }
-    .wrap { max-width: 920px; margin: 0 auto; padding: 56px 20px 80px; }
-    .card { background: #fff; border: 1px solid #e5e7eb; border-radius: 18px; padding: 28px; box-shadow: 0 8px 30px rgba(15,23,42,.05); }
-    h1 { font-size: clamp(2rem, 5vw, 4rem); line-height: 1.02; margin: 0 0 14px; }
-    h2 { margin: 34px 0 12px; font-size: 1.25rem; }
-    p { margin: 0 0 14px; color: #374151; }
-    .eyebrow { display: inline-block; padding: 8px 12px; border-radius: 999px; background: #eef2ff; color: #4338ca; font-size: .85rem; font-weight: 700; margin-bottom: 18px; }
-    .grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top: 18px; }
-    .box { padding: 16px; border-radius: 14px; background: #f9fafb; border: 1px solid #e5e7eb; }
-    .price { font-size: 1.6rem; font-weight: 800; color: #111827; }
-    .cta { display: inline-block; margin-top: 18px; padding: 14px 18px; border-radius: 12px; background: #111827; color: #fff; text-decoration: none; font-weight: 700; }
-    .muted { font-size: .95rem; color: #6b7280; }
-    ul { margin: 10px 0 0 20px; color: #374151; }
-    code { background: #f3f4f6; padding: 2px 6px; border-radius: 6px; }
-    .sample { background: #0f172a; color: #e2e8f0; padding: 18px; border-radius: 14px; overflow: auto; }
-    .sample strong { color: #fff; }
+    :root {
+      --bg: #f7f8fc;
+      --card: #ffffff;
+      --text: #101828;
+      --muted: #475467;
+      --line: #dbe2ea;
+      --brand: #1d4ed8;
+      --brand-dark: #173ea6;
+      --accent: #eff6ff;
+      --good: #0f766e;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: linear-gradient(180deg, #f8fbff 0%, var(--bg) 100%);
+      color: var(--text);
+      line-height: 1.55;
+    }
+    .wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 28px 20px 80px;
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .brand {
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      font-size: 1.2rem;
+    }
+    .nav a,
+    .button {
+      text-decoration: none;
+      color: white;
+      background: var(--brand);
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-weight: 700;
+      display: inline-block;
+    }
+    .nav a:hover,
+    .button:hover { background: var(--brand-dark); }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 24px;
+      align-items: start;
+      margin-bottom: 24px;
+    }
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: 0 12px 32px rgba(16, 24, 40, 0.06);
+    }
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--brand);
+      font-size: .84rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2.3rem, 5vw, 4.6rem);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+    }
+    h2 {
+      margin: 0 0 12px;
+      font-size: 1.55rem;
+      letter-spacing: -0.03em;
+    }
+    h3 {
+      margin: 0 0 10px;
+      font-size: 1.05rem;
+    }
+    p { margin: 0 0 14px; color: var(--muted); }
+    .lead {
+      font-size: 1.1rem;
+      max-width: 62ch;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .button.secondary {
+      background: white;
+      color: var(--text);
+      border: 1px solid var(--line);
+    }
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .kpi {
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+    }
+    .kpi strong {
+      display: block;
+      font-size: 1.4rem;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .mini {
+      font-size: .93rem;
+      color: var(--muted);
+    }
+    .stack {
+      display: grid;
+      gap: 14px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #ecfdf3;
+      color: var(--good);
+      font-size: .82rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .list {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+    .grid-3,
+    .grid-2 {
+      display: grid;
+      gap: 18px;
+      margin-top: 20px;
+    }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 10px 24px rgba(16, 24, 40, 0.04);
+    }
+    .quote {
+      background: #0f172a;
+      color: #e5eefb;
+      border-radius: 18px;
+      padding: 22px;
+      overflow: auto;
+      font-size: .96rem;
+    }
+    .quote strong { color: white; }
+    .section {
+      margin-top: 24px;
+    }
+    .price {
+      font-size: 2rem;
+      line-height: 1;
+      margin: 8px 0;
+      font-weight: 800;
+    }
+    .faq dt {
+      font-weight: 700;
+      margin-top: 14px;
+      margin-bottom: 6px;
+    }
+    .faq dd {
+      margin: 0;
+      color: var(--muted);
+    }
+    footer {
+      margin-top: 26px;
+      color: #667085;
+      font-size: .92rem;
+      text-align: center;
+    }
+    @media (max-width: 900px) {
+      .hero, .grid-3, .grid-2, .kpis { grid-template-columns: 1fr; }
+      .wrap { padding-bottom: 48px; }
+    }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <div class="card">
-      <div class="eyebrow">AI-fulfilled outbound growth</div>
-      <h1>Outbound Starter Pack for B2B SaaS agencies</h1>
-      <p>Get a ready-to-send outbound pack in 48 hours, built to help agencies start conversations without wasting time on research, personalization, or sequence writing.</p>
-
-      <a class="cta" href="#cta">Request a sample pack</a>
-
-      <div class="grid">
-        <div class="box">
-          <h2>What you get</h2>
-          <ul>
-            <li>50 ICP-fit prospects</li>
-            <li>10 personalized first lines</li>
-            <li>4-touch follow-up sequence</li>
-            <li>Simple send sheet</li>
-          </ul>
-        </div>
-        <div class="box">
-          <h2>Why it works</h2>
-          <ul>
-            <li>No blank-page work</li>
-            <li>No consulting calls</li>
-            <li>No ad spend</li>
-            <li>No hiring</li>
-          </ul>
-        </div>
-        <div class="box">
-          <h2>Pilot price</h2>
-          <div class="price">$750 flat</div>
-          <p class="muted">Optional monthly retainer after the pilot.</p>
-        </div>
-      </div>
-
-      <h2>Sample output</h2>
-      <div class="sample">
-        <p><strong>Company:</strong> Kalungi</p>
-        <p><strong>Why them:</strong> Strong B2B SaaS positioning around predictable pipeline and growth.</p>
-        <p><strong>First line:</strong> Saw how you frame Kalungi around predictable pipeline and growth, and the case studies show real GTM lift.</p>
-        <p><strong>CTA:</strong> Want a 1-page sample pack for one of your services?</p>
-      </div>
-
-      <h2 id="cta">CTA</h2>
-      <p>Reply with <code>sample</code> and I’ll send a tailored pack for one service line.</p>
+    <div class="nav">
+      <div class="brand">Pipeline Pack</div>
+      <a href="mailto:evan@pipelinepack.co?subject=Sample%20pack">Request a sample</a>
     </div>
+
+    <section class="hero">
+      <div class="panel">
+        <div class="eyebrow">Done-for-you outbound for B2B agencies</div>
+        <h1>More prospect-ready outreach, without burning team time.</h1>
+        <p class="lead">Pipeline Pack builds the list, writes the openers, and hands over a ready-to-send outbound pack for agencies that need more conversations but do not want another internal project.</p>
+        <div class="actions">
+          <a class="button" href="mailto:evan@pipelinepack.co?subject=Sample%20pack">Get a sample pack</a>
+          <a class="button secondary" href="#deliverables">See what’s included</a>
+        </div>
+        <div class="kpis">
+          <div class="kpi">
+            <strong>48 hours</strong>
+            <span class="mini">Typical pilot turnaround</span>
+          </div>
+          <div class="kpi">
+            <strong>50 prospects</strong>
+            <span class="mini">Curated to a specific service line</span>
+          </div>
+          <div class="kpi">
+            <strong>$750</strong>
+            <span class="mini">Flat pilot price</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel stack">
+        <div>
+          <div class="badge">Who this is for</div>
+          <p>B2B agencies and consultants selling retainers in the $3k to $15k range and trying to create more pipeline without adding SDR overhead.</p>
+        </div>
+        <div>
+          <div class="badge">Why agencies buy this</div>
+          <ul class="list">
+            <li>Outbound gets pushed down the list when delivery work piles up.</li>
+            <li>List building and personalization eat hours fast.</li>
+            <li>Most teams have ideas, but not a clean pack ready to send.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="badge">USP</div>
+          <p>This is not strategy, not coaching, and not another software tool. It is a finished outbound asset your team can use right away.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section grid-3" id="deliverables">
+      <div class="card">
+        <h3>Qualified prospect list</h3>
+        <p>50 ICP-fit accounts matched to your offer, niche, and buyer profile.</p>
+      </div>
+      <div class="card">
+        <h3>Personalized first lines</h3>
+        <p>10 tailored openers built from actual company context, not generic spin.</p>
+      </div>
+      <div class="card">
+        <h3>Follow-up sequence</h3>
+        <p>Two short sequence variants so your team can test tone without starting from zero.</p>
+      </div>
+    </section>
+
+    <section class="section grid-2">
+      <div class="card">
+        <h2>What the pilot includes</h2>
+        <ul class="list">
+          <li>50 prospects in a simple send sheet</li>
+          <li>10 personalized first lines for high-priority targets</li>
+          <li>Two 4-touch outreach sequence variants</li>
+          <li>10 short account notes for context</li>
+          <li>Delivery in 48 hours after scope is clear</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>How it’s different</h2>
+        <ul class="list">
+          <li>No meetings required to get value from the pilot</li>
+          <li>No long strategy deck before work starts</li>
+          <li>No new software to learn</li>
+          <li>No dependence on Josh’s labor or expertise</li>
+          <li>Built as a concrete asset, not advice</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section grid-2">
+      <div class="card">
+        <h2>Example output</h2>
+        <div class="quote">
+          <p><strong>Company:</strong> Kalungi</p>
+          <p><strong>Why them:</strong> Strong positioning around predictable pipeline and growth for B2B SaaS.</p>
+          <p><strong>First line:</strong> Saw how you frame Kalungi around predictable pipeline and growth, and the case studies show real GTM lift.</p>
+          <p><strong>CTA:</strong> Want a one-page sample pack for one of your service lines?</p>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Pricing</h2>
+        <div class="price">$750 pilot</div>
+        <p>Flat fee for the first pack.</p>
+        <p>After that, ongoing packs can roll into a monthly retainer if the pilot produces useful conversations.</p>
+        <a class="button" href="mailto:evan@pipelinepack.co?subject=Pilot%20request">Ask for a pilot</a>
+      </div>
+    </section>
+
+    <section class="section card">
+      <h2>FAQ</h2>
+      <dl class="faq">
+        <dt>Do you run the outbound too?</dt>
+        <dd>By default, no. The core offer is the finished outbound pack. Execution support can be discussed after the pilot.</dd>
+
+        <dt>Do you need calls to get started?</dt>
+        <dd>No. A short brief over email is enough for the pilot.</dd>
+
+        <dt>What if we already know our ICP?</dt>
+        <dd>That helps. The faster the brief is clear, the faster the pack ships.</dd>
+
+        <dt>Who should reach out?</dt>
+        <dd>Agency owners, operators, or growth leads who want more outbound activity without assigning it internally.</dd>
+      </dl>
+    </section>
+
+    <footer>
+      Pipeline Pack · outbound packs for B2B agencies · <a href="mailto:evan@pipelinepack.co">evan@pipelinepack.co</a>
+    </footer>
   </div>
 </body>
 </html>
