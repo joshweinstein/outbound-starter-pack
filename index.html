@@ -3,335 +3,527 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Pipeline Pack | Done-for-you outbound packs for B2B agencies</title>
-  <meta name="description" content="Pipeline Pack builds prospect lists, personalized openers, and outreach sequences for B2B agencies that need more conversations without adding headcount." />
+  <title>Pipeline Pack | Send-ready outbound campaigns for boutique B2B agencies</title>
+  <meta name="description" content="Pipeline Pack turns one agency service line into a send-ready outbound campaign in 72 hours, without burning strategist or SDR time." />
+  <meta name="theme-color" content="#0f172a" />
   <style>
     :root {
-      --bg: #f7f8fc;
-      --card: #ffffff;
-      --text: #101828;
-      --muted: #475467;
-      --line: #dbe2ea;
-      --brand: #1d4ed8;
-      --brand-dark: #173ea6;
-      --accent: #eff6ff;
-      --good: #0f766e;
+      --bg: #08111f;
+      --bg-soft: #0f1b2d;
+      --panel: rgba(255, 255, 255, 0.06);
+      --panel-solid: #101c30;
+      --text: #f8fafc;
+      --muted: #b6c2d2;
+      --line: rgba(255, 255, 255, 0.12);
+      --brand: #60a5fa;
+      --brand-strong: #3b82f6;
+      --brand-soft: rgba(96, 165, 250, 0.12);
+      --success: #86efac;
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --max: 1160px;
     }
+
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-      background: linear-gradient(180deg, #f8fbff 0%, var(--bg) 100%);
       color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(59,130,246,.26), transparent 28%),
+        radial-gradient(circle at top right, rgba(14,165,233,.16), transparent 26%),
+        linear-gradient(180deg, #08111f 0%, #0b1526 46%, #0a1322 100%);
       line-height: 1.55;
     }
+
+    a { color: inherit; }
+
     .wrap {
-      max-width: 1120px;
+      max-width: var(--max);
       margin: 0 auto;
-      padding: 28px 20px 80px;
+      padding: 28px 20px 88px;
     }
+
     .nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 16px;
-      margin-bottom: 28px;
+      margin-bottom: 32px;
     }
+
     .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       font-weight: 800;
       letter-spacing: -0.03em;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
     }
-    .nav a,
-    .button {
-      text-decoration: none;
-      color: white;
-      background: var(--brand);
-      padding: 12px 16px;
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
       border-radius: 12px;
-      font-weight: 700;
-      display: inline-block;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--brand-strong), #22d3ee);
+      color: white;
+      box-shadow: 0 10px 24px rgba(59,130,246,.35);
+      font-size: .95rem;
+      font-weight: 900;
     }
-    .nav a:hover,
-    .button:hover { background: var(--brand-dark); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 18px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 800;
+      border: 1px solid transparent;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+    }
+
+    .button:hover { transform: translateY(-1px); }
+
+    .button.primary {
+      background: linear-gradient(135deg, var(--brand-strong), #2563eb);
+      color: white;
+      box-shadow: 0 14px 30px rgba(37,99,235,.28);
+    }
+
+    .button.secondary {
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      border-color: var(--line);
+    }
+
     .hero {
       display: grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 24px;
-      align-items: start;
-      margin-bottom: 24px;
+      grid-template-columns: minmax(0, 1.15fr) minmax(320px, .85fr);
+      gap: 22px;
+      align-items: stretch;
     }
+
     .panel {
-      background: var(--card);
+      background: var(--panel);
       border: 1px solid var(--line);
-      border-radius: 22px;
-      padding: 28px;
-      box-shadow: 0 12px 32px rgba(16, 24, 40, 0.06);
+      border-radius: var(--radius-xl);
+      padding: 32px;
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
     }
+
     .eyebrow {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       padding: 8px 12px;
       border-radius: 999px;
-      background: var(--accent);
-      color: var(--brand);
-      font-size: .84rem;
+      background: var(--brand-soft);
+      border: 1px solid rgba(96,165,250,.22);
+      color: #bfdbfe;
+      font-size: .82rem;
       font-weight: 800;
-      margin-bottom: 14px;
+      letter-spacing: .03em;
+      margin-bottom: 16px;
+      text-transform: uppercase;
     }
+
     h1 {
-      margin: 0 0 14px;
-      font-size: clamp(2.3rem, 5vw, 4.6rem);
-      line-height: 0.98;
-      letter-spacing: -0.05em;
+      margin: 0 0 16px;
+      font-size: clamp(2.7rem, 5.8vw, 5.1rem);
+      line-height: .94;
+      letter-spacing: -0.06em;
+      max-width: 11ch;
     }
+
     h2 {
       margin: 0 0 12px;
-      font-size: 1.55rem;
-      letter-spacing: -0.03em;
+      font-size: clamp(1.5rem, 2vw, 2rem);
+      letter-spacing: -0.04em;
+      line-height: 1.02;
     }
+
     h3 {
       margin: 0 0 10px;
-      font-size: 1.05rem;
+      font-size: 1.06rem;
+      letter-spacing: -0.02em;
     }
-    p { margin: 0 0 14px; color: var(--muted); }
+
+    p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
     .lead {
       font-size: 1.1rem;
-      max-width: 62ch;
+      max-width: 60ch;
     }
-    .actions {
+
+    .button-row {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 18px;
+      margin-top: 24px;
     }
-    .button.secondary {
-      background: white;
-      color: var(--text);
-      border: 1px solid var(--line);
-    }
-    .kpis {
+
+    .hero-points {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 12px;
-      margin-top: 18px;
+      margin-top: 26px;
     }
-    .kpi {
-      background: #f8fafc;
+
+    .hero-point {
+      background: rgba(255,255,255,.04);
       border: 1px solid var(--line);
-      border-radius: 16px;
+      border-radius: var(--radius-md);
       padding: 14px;
     }
-    .kpi strong {
+
+    .hero-point strong {
       display: block;
-      font-size: 1.4rem;
-      line-height: 1;
+      font-size: 1.3rem;
+      letter-spacing: -0.03em;
       margin-bottom: 6px;
+      color: white;
     }
-    .mini {
-      font-size: .93rem;
-      color: var(--muted);
-    }
-    .stack {
+
+    .side-stack {
       display: grid;
-      gap: 14px;
+      gap: 16px;
     }
-    .badge {
+
+    .side-card {
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+    }
+
+    .label {
       display: inline-block;
+      margin-bottom: 10px;
       padding: 6px 10px;
       border-radius: 999px;
-      background: #ecfdf3;
-      color: var(--good);
-      font-size: .82rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-    .list {
-      margin: 0;
-      padding-left: 18px;
-      color: var(--muted);
-    }
-    .grid-3,
-    .grid-2 {
-      display: grid;
-      gap: 18px;
-      margin-top: 20px;
-    }
-    .grid-3 { grid-template-columns: repeat(3, 1fr); }
-    .grid-2 { grid-template-columns: repeat(2, 1fr); }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 22px;
-      box-shadow: 0 10px 24px rgba(16, 24, 40, 0.04);
-    }
-    .quote {
-      background: #0f172a;
-      color: #e5eefb;
-      border-radius: 18px;
-      padding: 22px;
-      overflow: auto;
-      font-size: .96rem;
-    }
-    .quote strong { color: white; }
-    .section {
-      margin-top: 24px;
-    }
-    .price {
-      font-size: 2rem;
-      line-height: 1;
-      margin: 8px 0;
+      background: rgba(134,239,172,.08);
+      color: var(--success);
+      border: 1px solid rgba(134,239,172,.18);
+      font-size: .8rem;
       font-weight: 800;
     }
-    .faq dt {
-      font-weight: 700;
-      margin-top: 14px;
-      margin-bottom: 6px;
+
+    .strip {
+      margin: 18px 0 0;
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(96,165,250,.08);
+      border: 1px solid rgba(96,165,250,.16);
+      color: #dbeafe;
+      font-weight: 600;
     }
-    .faq dd {
+
+    .section {
+      margin-top: 22px;
+    }
+
+    .grid-2,
+    .grid-3 {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .list {
       margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .list li {
+      position: relative;
+      padding-left: 18px;
+      margin: 0 0 10px;
       color: var(--muted);
     }
-    footer {
-      margin-top: 26px;
-      color: #667085;
-      font-size: .92rem;
-      text-align: center;
+
+    .list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #93c5fd;
+      font-weight: 900;
     }
-    @media (max-width: 900px) {
-      .hero, .grid-3, .grid-2, .kpis { grid-template-columns: 1fr; }
-      .wrap { padding-bottom: 48px; }
+
+    .big-quote {
+      background: linear-gradient(180deg, #0d1729, #0a1322);
+    }
+
+    .price {
+      font-size: 2.5rem;
+      line-height: .95;
+      margin: 6px 0 10px;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      color: white;
+    }
+
+    .mini-note {
+      color: #dbeafe;
+      font-size: .95rem;
+    }
+
+    .sample {
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .sample p { margin-bottom: 10px; }
+    .sample strong { color: white; }
+
+    .faq-item + .faq-item {
+      border-top: 1px solid var(--line);
+      padding-top: 16px;
+      margin-top: 16px;
+    }
+
+    .cta-panel {
+      text-align: center;
+      background: linear-gradient(180deg, rgba(59,130,246,.14), rgba(34,211,238,.08));
+    }
+
+    .footer {
+      margin-top: 26px;
+      text-align: center;
+      color: #8ca0b8;
+      font-size: .94rem;
+    }
+
+    @media (max-width: 920px) {
+      .hero,
+      .grid-2,
+      .grid-3,
+      .hero-points {
+        grid-template-columns: 1fr;
+      }
+
+      .wrap { padding-bottom: 56px; }
+      .panel, .card, .side-card { padding: 24px; }
+      .nav { flex-wrap: wrap; }
     }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <div class="nav">
-      <div class="brand">Pipeline Pack</div>
-      <a href="mailto:evan@pipelinepack.co?subject=Sample%20pack">Request a sample</a>
-    </div>
+    <header class="nav">
+      <div class="brand">
+        <div class="brand-mark">P</div>
+        <span>Pipeline Pack</span>
+      </div>
+      <div class="nav-links">
+        <a class="nav-link" href="#offer">Offer</a>
+        <a class="nav-link" href="#pricing">Pricing</a>
+        <a class="button primary" href="mailto:evan@pipelinepack.co?subject=Pipeline%20Pack%20sample">Request a sample</a>
+      </div>
+    </header>
 
     <section class="hero">
       <div class="panel">
-        <div class="eyebrow">Done-for-you outbound for B2B agencies</div>
-        <h1>More prospect-ready outreach, without burning team time.</h1>
-        <p class="lead">Pipeline Pack builds the list, writes the openers, and hands over a ready-to-send outbound pack for agencies that need more conversations but do not want another internal project.</p>
-        <div class="actions">
-          <a class="button" href="mailto:evan@pipelinepack.co?subject=Sample%20pack">Get a sample pack</a>
-          <a class="button secondary" href="#deliverables">See what’s included</a>
+        <div class="eyebrow">Send-ready outbound for boutique B2B agencies</div>
+        <h1>Turn one service line into a campaign your team can actually send.</h1>
+        <p class="lead">Pipeline Pack builds a campaign-in-a-box for agencies that need self-generated pipeline, but do not want to burn strategist or SDR time on targeting, research, and copy. In 72 hours, you get one outbound campaign built around a real wedge, named target accounts, and send-ready messaging.</p>
+        <div class="button-row">
+          <a class="button primary" href="mailto:evan@pipelinepack.co?subject=Pipeline%20Pack%20sample">Request a sample pack</a>
+          <a class="button secondary" href="#offer">See what’s included</a>
         </div>
-        <div class="kpis">
-          <div class="kpi">
-            <strong>48 hours</strong>
-            <span class="mini">Typical pilot turnaround</span>
+        <div class="hero-points">
+          <div class="hero-point">
+            <strong>72 hours</strong>
+            <span>From brief to send-ready campaign</span>
           </div>
-          <div class="kpi">
-            <strong>50 prospects</strong>
-            <span class="mini">Curated to a specific service line</span>
+          <div class="hero-point">
+            <strong>1 service line</strong>
+            <span>Focused scope, believable angle</span>
           </div>
-          <div class="kpi">
-            <strong>$750</strong>
-            <span class="mini">Flat pilot price</span>
+          <div class="hero-point">
+            <strong>$1,250</strong>
+            <span>Flat pilot with one free revision</span>
           </div>
         </div>
       </div>
 
-      <div class="panel stack">
-        <div>
-          <div class="badge">Who this is for</div>
-          <p>B2B agencies and consultants selling retainers in the $3k to $15k range and trying to create more pipeline without adding SDR overhead.</p>
-        </div>
-        <div>
-          <div class="badge">Why agencies buy this</div>
+      <div class="side-stack">
+        <div class="side-card">
+          <div class="label">Who this fits</div>
+          <p>Boutique B2B agencies with proof, case studies, and decent retainers, but inconsistent self-generated pipeline.</p>
           <ul class="list">
-            <li>Outbound gets pushed down the list when delivery work piles up.</li>
-            <li>List building and personalization eat hours fast.</li>
-            <li>Most teams have ideas, but not a clean pack ready to send.</li>
+            <li>5 to 40 person teams</li>
+            <li>$5k to $25k monthly retainers</li>
+            <li>Founder-led or lean sales-led shops</li>
           </ul>
         </div>
-        <div>
-          <div class="badge">USP</div>
-          <p>This is not strategy, not coaching, and not another software tool. It is a finished outbound asset your team can use right away.</p>
+        <div class="side-card">
+          <div class="label">Why outbound stalls</div>
+          <ul class="list">
+            <li>The offer is too broad to pitch cleanly</li>
+            <li>Nobody owns research and messaging end to end</li>
+            <li>Lists exist, but no real campaign gets launched</li>
+            <li>Client work keeps pushing outbound off the calendar</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <section class="section grid-3" id="deliverables">
-      <div class="card">
-        <h3>Qualified prospect list</h3>
-        <p>50 ICP-fit accounts matched to your offer, niche, and buyer profile.</p>
+    <div class="strip">This is not a lead list. Pipeline Pack is structured as one send-ready outbound campaign for one service line, so the buyer can go from “we should do outbound” to “we can launch this now.”</div>
+
+    <section class="section grid-2" id="offer">
+      <div class="card big-quote">
+        <h2>The offer</h2>
+        <p>We turn one agency offer into a ready-to-run outbound campaign in 72 hours.</p>
+        <p>Instead of handing over generic research, Pipeline Pack packages the angle, the targeting, the account context, and the copy into one usable campaign asset.</p>
       </div>
       <div class="card">
-        <h3>Personalized first lines</h3>
-        <p>10 tailored openers built from actual company context, not generic spin.</p>
+        <h2>What makes it different</h2>
+        <ul class="list">
+          <li>Starts with a sellable wedge, not with scraped names</li>
+          <li>Built around one campaign, so it feels concrete and usable</li>
+          <li>Reduces time-to-first-send, not just research time</li>
+          <li>No strategy calls required if the service line is clear</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section grid-3">
+      <div class="card">
+        <h3>1. Campaign brief</h3>
+        <ul class="list">
+          <li>ICP definition</li>
+          <li>Primary pain point</li>
+          <li>Trigger event</li>
+          <li>Campaign angle</li>
+        </ul>
       </div>
       <div class="card">
-        <h3>Follow-up sequence</h3>
-        <p>Two short sequence variants so your team can test tone without starting from zero.</p>
+        <h3>2. Targeting and research</h3>
+        <ul class="list">
+          <li>75 named target accounts</li>
+          <li>Tier A / B / C prioritization</li>
+          <li>25 custom first lines</li>
+          <li>10 account notes</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>3. Send-ready copy</h3>
+        <ul class="list">
+          <li>2 complete 4-touch sequences</li>
+          <li>Subject line variants</li>
+          <li>CTA options</li>
+          <li>Handoff sheet for sending</li>
+        </ul>
       </div>
     </section>
 
     <section class="section grid-2">
       <div class="card">
-        <h2>What the pilot includes</h2>
-        <ul class="list">
-          <li>50 prospects in a simple send sheet</li>
-          <li>10 personalized first lines for high-priority targets</li>
-          <li>Two 4-touch outreach sequence variants</li>
-          <li>10 short account notes for context</li>
-          <li>Delivery in 48 hours after scope is clear</li>
-        </ul>
+        <h2>Why this converts better than generic outbound help</h2>
+        <p>Most agencies do not need another freelancer sending them CSVs. They need a campaign they can believe in, tied to one service line and one concrete buyer pain.</p>
+        <p>That is the jump Pipeline Pack is designed to make.</p>
       </div>
       <div class="card">
-        <h2>How it’s different</h2>
+        <h2>Best-fit buyers</h2>
         <ul class="list">
-          <li>No meetings required to get value from the pilot</li>
-          <li>No long strategy deck before work starts</li>
-          <li>No new software to learn</li>
-          <li>No dependence on Josh’s labor or expertise</li>
-          <li>Built as a concrete asset, not advice</li>
+          <li>B2B SaaS growth agencies</li>
+          <li>Paid acquisition agencies</li>
+          <li>RevOps agencies</li>
+          <li>Specialist consultancies with repeatable offers</li>
+          <li>Outbound or SDR agencies expanding into a new wedge</li>
         </ul>
       </div>
     </section>
 
     <section class="section grid-2">
       <div class="card">
-        <h2>Example output</h2>
-        <div class="quote">
+        <h2>What the sample proves</h2>
+        <p>Before buying, the prospect can review a compact sample for one service line. The goal is simple: show that the angle is sharp, the targets feel right, and the copy is specific enough to send.</p>
+        <div class="sample">
           <p><strong>Company:</strong> Kalungi</p>
-          <p><strong>Why them:</strong> Strong positioning around predictable pipeline and growth for B2B SaaS.</p>
-          <p><strong>First line:</strong> Saw how you frame Kalungi around predictable pipeline and growth, and the case studies show real GTM lift.</p>
+          <p><strong>Why them:</strong> Strong B2B SaaS positioning around predictable pipeline and measurable growth.</p>
+          <p><strong>First line:</strong> Saw how you frame Kalungi around predictable pipeline and growth, and the case studies make the motion feel concrete.</p>
           <p><strong>CTA:</strong> Want a one-page sample pack for one of your service lines?</p>
         </div>
       </div>
-      <div class="card">
-        <h2>Pricing</h2>
-        <div class="price">$750 pilot</div>
-        <p>Flat fee for the first pack.</p>
-        <p>After that, ongoing packs can roll into a monthly retainer if the pilot produces useful conversations.</p>
-        <a class="button" href="mailto:evan@pipelinepack.co?subject=Pilot%20request">Ask for a pilot</a>
+      <div class="card" id="pricing">
+        <h2>Pilot pricing</h2>
+        <div class="price">$1,250</div>
+        <p class="mini-note">One campaign, one service line, one ICP. Delivered in 72 hours.</p>
+        <p>If the pack feels too generic to send, Pipeline Pack will revise it once at no charge until it is campaign-ready.</p>
+        <div class="button-row">
+          <a class="button primary" href="mailto:evan@pipelinepack.co?subject=Pipeline%20Pack%20pilot">Ask for the pilot</a>
+        </div>
       </div>
     </section>
 
-    <section class="section card">
-      <h2>FAQ</h2>
-      <dl class="faq">
-        <dt>Do you run the outbound too?</dt>
-        <dd>By default, no. The core offer is the finished outbound pack. Execution support can be discussed after the pilot.</dd>
-
-        <dt>Do you need calls to get started?</dt>
-        <dd>No. A short brief over email is enough for the pilot.</dd>
-
-        <dt>What if we already know our ICP?</dt>
-        <dd>That helps. The faster the brief is clear, the faster the pack ships.</dd>
-
-        <dt>Who should reach out?</dt>
-        <dd>Agency owners, operators, or growth leads who want more outbound activity without assigning it internally.</dd>
-      </dl>
+    <section class="section grid-2">
+      <div class="card">
+        <h2>FAQ</h2>
+        <div class="faq-item">
+          <h3>Do we need a call?</h3>
+          <p>No, not if the service line and ICP are already clear.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Is this done-for-you sending?</h3>
+          <p>No. Pipeline Pack builds the campaign assets so your team can launch faster.</p>
+        </div>
+        <div class="faq-item">
+          <h3>What if we want more than one campaign?</h3>
+          <p>After the pilot, the offer can expand into multiple campaigns or monthly production.</p>
+        </div>
+      </div>
+      <div class="card cta-panel">
+        <h2>Get a sample for one service line</h2>
+        <p>Send your agency name, the service line you want to push, and the ICP you want to target. Pipeline Pack will send back a compact sample showing how the campaign would be framed.</p>
+        <div class="button-row" style="justify-content:center;">
+          <a class="button primary" href="mailto:evan@pipelinepack.co?subject=Pipeline%20Pack%20sample">Request a sample pack</a>
+        </div>
+        <p style="margin-top: 16px;"><strong>evan@pipelinepack.co</strong></p>
+      </div>
     </section>
 
-    <footer>
-      Pipeline Pack · outbound packs for B2B agencies · <a href="mailto:evan@pipelinepack.co">evan@pipelinepack.co</a>
+    <footer class="footer">
+      Pipeline Pack · send-ready outbound campaigns for boutique B2B agencies · <a href="mailto:evan@pipelinepack.co">evan@pipelinepack.co</a>
     </footer>
   </div>
 </body>
