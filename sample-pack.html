@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pipeline Pack Sample | Example outbound campaign pack</title>
+  <meta name="description" content="A compact sample of the kind of outbound campaign asset Pipeline Pack builds for boutique B2B agencies." />
+  <meta name="theme-color" content="#0f172a" />
+  <style>
+    :root {
+      --bg: #08111f;
+      --bg-soft: #0f1b2d;
+      --panel: rgba(255,255,255,0.06);
+      --line: rgba(255,255,255,0.12);
+      --text: #f8fafc;
+      --muted: #b6c2d2;
+      --brand: #60a5fa;
+      --brand-strong: #2563eb;
+      --brand-soft: rgba(96,165,250,0.12);
+      --success: #86efac;
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --shadow: 0 24px 60px rgba(0,0,0,0.28);
+      --max: 1040px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(59,130,246,.26), transparent 28%),
+        linear-gradient(180deg, #08111f 0%, #0b1526 46%, #0a1322 100%);
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 28px 20px 88px; }
+    .nav, .hero, .grid { display: grid; gap: 18px; }
+    .nav {
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      text-decoration: none;
+    }
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--brand-strong), #22d3ee);
+      box-shadow: 0 10px 24px rgba(59,130,246,.35);
+    }
+    .nav-links { display: flex; gap: 12px; align-items: center; }
+    .nav-link { color: var(--muted); text-decoration: none; font-weight: 600; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 18px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 800;
+      border: 1px solid transparent;
+    }
+    .button.primary {
+      background: linear-gradient(135deg, var(--brand-strong), #1d4ed8);
+      box-shadow: 0 14px 30px rgba(37,99,235,.28);
+    }
+    .button.secondary {
+      background: rgba(255,255,255,.03);
+      border-color: var(--line);
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      padding: 30px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+    .eyebrow {
+      display: inline-flex;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--brand-soft);
+      border: 1px solid rgba(96,165,250,.22);
+      color: #bfdbfe;
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    h1, h2, h3 { letter-spacing: -0.04em; margin: 0 0 12px; }
+    h1 { font-size: clamp(2.3rem, 5.5vw, 4.4rem); line-height: .96; max-width: 11ch; }
+    p { margin: 0 0 14px; color: var(--muted); }
+    .lead { font-size: 1.08rem; max-width: 60ch; }
+    .hero { grid-template-columns: 1.15fr .85fr; }
+    .stats, .grid-2 { display: grid; gap: 16px; }
+    .stats { grid-template-columns: repeat(3, 1fr); margin-top: 20px; }
+    .stat, .card, .sample-block {
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 18px;
+    }
+    .stat strong { display: block; font-size: 1.25rem; color: white; margin-bottom: 6px; }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 18px; }
+    ul { margin: 0; padding-left: 18px; color: var(--muted); }
+    li { margin-bottom: 8px; }
+    .label {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(134,239,172,.08);
+      color: var(--success);
+      border: 1px solid rgba(134,239,172,.18);
+      font-size: .8rem;
+      font-weight: 800;
+    }
+    .quote {
+      padding: 18px;
+      border-radius: var(--radius-md);
+      background: rgba(96,165,250,.08);
+      border: 1px solid rgba(96,165,250,.16);
+      color: #dbeafe;
+      font-weight: 600;
+    }
+    .footer { margin-top: 24px; text-align: center; color: #8ca0b8; }
+    @media (max-width: 900px) {
+      .hero, .grid-2, .stats, .nav { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="nav">
+      <a class="brand" href="./index.html">
+        <span class="brand-mark">P</span>
+        <span>Pipeline Pack</span>
+      </a>
+      <div class="nav-links">
+        <a class="nav-link" href="./index.html">Home</a>
+        <a class="button primary" href="mailto:evan@pipelinepack.co?subject=Pipeline%20Pack%20sample&body=Agency%20name%3A%0AService%20line%20to%20push%3A%0AICP%3A%0AAnything%20you%20already%20know%20about%20the%20campaign%3A">Request your sample</a>
+      </div>
+    </header>
+
+    <section class="hero panel">
+      <div>
+        <div class="eyebrow">Compact example</div>
+        <h1>What a Pipeline Pack sample actually looks like.</h1>
+        <p class="lead">This is a short preview of the kind of campaign thinking, account context, and messaging structure Pipeline Pack builds for boutique B2B agencies. The paid pilot goes deeper. The sample is here to prove the work will feel specific, usable, and launchable.</p>
+        <div class="stats">
+          <div class="stat"><strong>1 wedge</strong><span>One believable service-line angle</span></div>
+          <div class="stat"><strong>Named targets</strong><span>Accounts that fit the motion</span></div>
+          <div class="stat"><strong>Send-ready copy</strong><span>Clear opener and CTA direction</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="label">What the full pilot includes</div>
+        <ul>
+          <li>75 target accounts for one ICP</li>
+          <li>25 personalized first lines</li>
+          <li>2 complete 4-touch email sequences</li>
+          <li>10 account notes for top-priority targets</li>
+          <li>One handoff sheet your team can send from</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="grid-2">
+      <div class="panel">
+        <h2>Sample campaign brief</h2>
+        <div class="sample-block">
+          <p><strong>Target agency type:</strong> B2B SaaS growth agency</p>
+          <p><strong>Service line:</strong> predictable pipeline / growth programs</p>
+          <p><strong>ICP:</strong> B2B SaaS teams with real ACV, decent proof, and inconsistent self-sourced pipeline</p>
+          <p><strong>Angle:</strong> turn existing proof into a focused outbound motion instead of relying on referrals and opportunistic inbound</p>
+          <p><strong>Why it works:</strong> it speaks to agencies that know outbound matters, but have not turned one clear offer into a campaign someone can ship this week.</p>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>Example account slice</h2>
+        <div class="sample-block">
+          <p><strong>Company:</strong> Kalungi</p>
+          <p><strong>Why they fit:</strong> strong positioning around predictable pipeline, measurable growth, and B2B SaaS specialization.</p>
+          <p><strong>Observed wedge:</strong> they already have language and case studies that can support a sharper outbound motion for one service line.</p>
+          <p><strong>Suggested opener:</strong> Saw how you frame Kalungi around predictable pipeline and measurable growth. The positioning is already strong, but it also feels like the kind of offer that could support a tighter outbound wedge than the usual broad agency pitch.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid-2">
+      <div class="panel">
+        <h2>Example CTA direction</h2>
+        <div class="quote">Want a one-page sample pack for one of your service lines? I can send back a compact version showing the angle, target type, and how the outreach would likely be framed.</div>
+      </div>
+      <div class="panel">
+        <h2>What buyers should take from this sample</h2>
+        <ul>
+          <li>The work starts from a credible wedge, not a scraped list.</li>
+          <li>The messaging is supposed to feel specific enough to send.</li>
+          <li>The deliverable is meant to remove launch friction for the buyer's team.</li>
+          <li>No strategy call is required if the service line and ICP are already clear.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="panel" style="margin-top:18px; text-align:center;">
+      <h2>Request a sample for your agency</h2>
+      <p>Send the agency name, the service line you want to push, and the ICP you want to reach. Pipeline Pack will reply with a compact sample showing how the campaign would be framed.</p>
+      <p><strong>Typical pilot:</strong> $1,250 flat · 72-hour turnaround · one service line · one ICP</p>
+      <a class="button primary" href="mailto:evan@pipelinepack.co?subject=Pipeline%20Pack%20sample&body=Agency%20name%3A%0AService%20line%20to%20push%3A%0AICP%3A%0AAnything%20you%20already%20know%20about%20the%20campaign%3A">Request your sample</a>
+    </section>
+
+    <footer class="footer">
+      Pipeline Pack · sample page · <a href="mailto:evan@pipelinepack.co">evan@pipelinepack.co</a>
+    </footer>
+  </div>
+</body>
+</html>
